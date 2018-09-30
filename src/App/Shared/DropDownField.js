@@ -1,4 +1,21 @@
 import React from 'react'
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown'
+import { Dropdown as OriginalDropdown } from 'office-ui-fabric-react/lib/Dropdown'
+import { connect } from 'react-redux'
+import { pathOr } from 'ramda'
 
-export default props => <Dropdown {...props} />
+import FieldConstants from '../Constants/Fields'
+
+const Dropdown = ({ configuration, name = '', ...otherProps }) => (
+  <OriginalDropdown name={name} {...FieldConstants[name]} {...configuration} {...otherProps} />
+)
+
+const mapStateToProps = (state, { path = [] }) => ({
+  configuration: pathOr({}, path, state)
+})
+
+const mapDispatchToProps = {}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dropdown)

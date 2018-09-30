@@ -10,39 +10,48 @@ export default () => (
     <div className="row">
       <div>
         <div className="col-4">
-          <TextField label="First Name" />
+          <TextField name="firstName" path={['fields', 'firstName']} />
         </div>
         <div className="col-4">
-          <TextField label="Middle Name" />
+          <TextField name="middleName" path={['fields', 'middleName']} />
         </div>
         <div className="col-4">
-          <TextField label="Last Name" />
+          <TextField name="lastName" path={['fields', 'lastName']} />
         </div>
       </div>
       <div className="row">
         <div>
           <div className="col-10">
-            <TextField label="Address" />
+            <TextField name="address" path={['fields', 'address']} />
           </div>
           <div className="col-2">
-            <TextField label="Zip Code" />
+            <TextField name="zipCode" path={['fields', 'zipCode']} />
           </div>
         </div>
       </div>
       <div>
         <div className="col-4">
-          <TextField label="City" />
+          <TextField name="city" path={['fields', 'city']} />
         </div>
         <div className="col-4">
-          <DropDownField label="State" />
+          <DropDownField name="state" path={['fields', 'state']} />
         </div>
         <div className="col-4">
-          <DropDownField label="Country" />
+          <DropDownField name="country" path={['fields', 'country']} />
         </div>
       </div>
       <div className="row">
         <div className="col-6">
-          <PhoneNumberField />
+          <PhoneNumberField
+            phoneNumberProps={{
+              name: 'phoneNumber',
+              path: ['fields', 'phoneNumber']
+            }}
+            phoneNumberCodeProps={{
+              name: 'phoneNumberCode',
+              path: ['fields', 'phoneNumberCode']
+            }}
+          />
         </div>
       </div>
     </div>
