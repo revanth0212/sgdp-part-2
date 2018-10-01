@@ -1,3 +1,5 @@
+import { CountryDropDownOptions, getStateDropDownOptions } from './DropdownOptions'
+
 export default {
   firstName: {
     label: 'First Name',
@@ -25,11 +27,13 @@ export default {
   },
   state: {
     label: 'State',
-    placeHolder: 'Select State'
+    placeHolder: 'Select State',
+    options: getStateDropDownOptions()
   },
   country: {
     label: 'Country',
-    placeHolder: 'Select Country'
+    placeHolder: 'Select Country',
+    options: CountryDropDownOptions
   },
   phoneNumber: {
     label: 'Phone Number',

@@ -8,7 +8,7 @@ export default () => (
   <div>
     <h3 style={{ paddingBottom: '2%', textAlign: 'center' }}>Registration Page</h3>
     <div className="row">
-      <div>
+      <div className="row">
         <div className="col-4">
           <TextField name="firstName" path={['fields', 'firstName']} />
         </div>
@@ -29,7 +29,7 @@ export default () => (
           </div>
         </div>
       </div>
-      <div>
+      <div className="row">
         <div className="col-4">
           <TextField name="city" path={['fields', 'city']} />
         </div>
