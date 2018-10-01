@@ -1,11 +1,11 @@
 export const CountryDropDownOptions = {
   USA: {
-    code: 'USA',
-    desc: 'United States of America'
+    key: 'USA',
+    text: 'United States of America'
   },
   IN: {
-    code: 'IN',
-    desc: 'India'
+    key: 'IN',
+    text: 'India'
   }
 }
 
@@ -13,22 +13,22 @@ export const getStateDropDownOptions = (country = '') =>
   ({
     USA: {
       TX: {
-        code: 'TX',
-        desc: 'Texas'
+        key: 'TX',
+        text: 'Texas'
       },
       CA: {
-        code: 'CA',
-        desc: 'California'
+        key: 'CA',
+        text: 'California'
       }
     },
     IN: {
       MH: {
-        code: 'MH',
-        desc: 'Maharastra'
+        key: 'MH',
+        text: 'Maharastra'
       },
       AP: {
-        code: 'AP',
-        desc: 'Andhra Pradesh'
+        key: 'AP',
+        text: 'Andhra Pradesh'
       }
     }
   }[country] || [])

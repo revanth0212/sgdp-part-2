@@ -1,20 +1,12 @@
 import React from 'react'
 import { Dropdown as OriginalDropdown } from 'office-ui-fabric-react/lib/Dropdown'
 import { connect } from 'react-redux'
-import { pathOr, compose, map, prop, values } from 'ramda'
+import { pathOr, map, prop, values } from 'ramda'
 
 import { updateFieldValue } from '../Actions/Fields'
 import FieldConstants from '../Constants/Fields'
 
-const displayOption = options => code => pathOr('', [code, 'desc'], options)
-
-const getOptions = compose(
-  map(prop('code')),
-  values
-)
-
-const onFieldChangeHandler = (updateFieldValue, onChange) => event => {
-  const value = pathOr('', ['target', 'value'], event)
+const onFieldChangeHandler = (updateFieldValue, onChange) => ({ key: value }) => {
   updateFieldValue(value)
   if (onChange) {
     onChange(value)
@@ -27,9 +19,8 @@ const Dropdown = ({ configuration, name, path, onChange = () => {}, updateFieldV
     {...configuration}
     {...otherProps}
     name={name}
-    onChange={onFieldChangeHandler(updateFieldValue, onChange(name))}
-    options={getOptions(configuration.options || FieldConstants[name].options || [])}
-    displayOption={displayOption(configuration.options || FieldConstants[name].options || [])}
+    onChanged={onFieldChangeHandler(updateFieldValue, onChange(name))}
+    options={values(configuration.options || FieldConstants[name].options || {})}
   />
 )
 
