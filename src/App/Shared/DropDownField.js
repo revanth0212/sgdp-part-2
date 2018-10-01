@@ -6,6 +6,13 @@ import { pathOr, compose, map, prop, values } from 'ramda'
 import { updateFieldValue } from '../Actions/Fields'
 import FieldConstants from '../Constants/Fields'
 
+const displayOption = options => code => pathOr('', [code, 'desc'], options)
+
+const getOptions = compose(
+  map(prop('code')),
+  values
+)
+
 const onFieldChangeHandler = (updateFieldValue, onChange) => event => {
   const value = pathOr('', ['target', 'value'], event)
   updateFieldValue(value)
@@ -14,19 +21,11 @@ const onFieldChangeHandler = (updateFieldValue, onChange) => event => {
   }
 }
 
-const displayOption = options => code => pathOr('', [code, 'desc'], options)
-
-const getOptions = compose(
-  map(prop('code')),
-  values
-)
-
 const Dropdown = ({ configuration, name, path, onChange = () => {}, updateFieldValue, ...otherProps }) => (
   <OriginalDropdown
     {...FieldConstants[name]}
     {...configuration}
     {...otherProps}
-    readOnly={false}
     name={name}
     onChange={onFieldChangeHandler(updateFieldValue, onChange(name))}
     options={getOptions(configuration.options || FieldConstants[name].options || [])}

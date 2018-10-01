@@ -18,7 +18,6 @@ const TextField = ({ configuration, name, path, onChange = () => {}, updateField
     {...FieldConstants[name]}
     {...configuration}
     {...otherProps}
-    readOnly={false}
     name={name}
     onChanged={onFieldChangeHandler(updateFieldValue, onChange(name))}
   />
